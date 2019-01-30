@@ -74,13 +74,42 @@ function account_pending(account) {
     return res;
 }
 
-function send(account, amount) {
-    var args = {
-        action: "send",
-        "wallet": Accs.a_W,
-        account: account,
-        amount: amount,
-    }
+//function send(account, amount) {
+//    var args = {
+//        action: "send",
+//        "wallet": Accs.a_W,
+//        account: account,
+//        amount: amount,
+//    }
+//    var res = _rpc(args);
+//}
 
+function createWallet() {
+    var args = {
+        action: "wallet_create"
+    }
     var res = _rpc(args);
+//    console.log("wallet created: " + res.wallet)
+    return res.wallet;
+}
+
+function createAccounts(wallet,count) {
+    var args = {
+        action: "accounts_create",
+        wallet: wallet,
+        count: count
+    }
+    var res = _rpc(args);
+    console.log("Acconts Created: " + res.accounts);
+    return res.accounts ;
+}
+
+function getAccounts(wallet) {
+    var args = {
+        action: "account_list",
+        wallet: wallet
+    }
+    var res = _rpc(args);
+    console.log(res.accounts);
+    return res.accounts;
 }

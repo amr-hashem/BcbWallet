@@ -28,6 +28,8 @@ RowLayout {
         Layout.alignment: Qt.AlignLeft
     }
 
+
+
     ColumnLayout {
         id: accountInfo
         Layout.alignment: Qt.AlignVCenter

@@ -2,7 +2,7 @@ import QtQuick 2.9
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.3
-
+import "rpc.js" as Rpc
 
 Drawer {
     id: sidePanel
@@ -100,11 +100,29 @@ Drawer {
             }
         }
 
+        Dialog {
+            id: choose
+            title: "Please past your wallet or create new one : "
+            contentItem: Rectangle {
+                color: "lightskyblue"
+                implicitWidth: 500
+                implicitHeight: 50
+                Text {
+                    text: "Hello blue sky!"
+                    color: "navy"
+                    anchors.centerIn: parent
+                }
+            }
+        }
+
         Button {
             text: "+ Add new account"
             flat: true
             Layout.alignment: Qt.AlignTop
             Layout.fillWidth: true
+            onClicked: {
+                choose.open()
+            }
         }
         Button {
             id: settingsBtn
